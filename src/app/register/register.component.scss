@@ -1,0 +1,32 @@
+// mat-form-field {
+//   width: 300px;
+// }
+
+mat-icon {
+  font-size: 15px;
+}
+
+.card-center {
+  margin-top: 2%;
+  position: relative;
+}
+
+
+.icon-space {
+  color: gray;
+  margin-bottom: 10%;
+  font-size: 80px;
+}
+
+.mat-error {
+  font-family: 'Raleway', sans-serif;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}

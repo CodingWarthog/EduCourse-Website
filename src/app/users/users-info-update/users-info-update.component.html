@@ -1,0 +1,69 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="100%" class="example-card">
+        <mat-card fxLayout fxLayoutAlign="center">
+            <mat-card-header fxLayout fxLayoutAlign="center center">
+              <mat-card-title fxLayout fxLayoutAlign="center ">
+                <mat-icon class="mat_icon">account_circle</mat-icon>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+<form class="example-container"[formGroup]="updateForm" (ngSubmit)="updateUserInfo()" autocomplete="off" >
+
+  
+      <mat-card-content class="example-container">
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>person</mat-icon> Imię
+              </mat-label>
+          <input formControlName="firstname" 
+                 matInput placeholder="Imię" 
+                 name="Firstname"
+                 value= "{{userData.firstname}}"
+                 > 
+                 <mat-error class="isValid-feedback">Musisz podać imię</mat-error>
+        </mat-form-field>
+      <mat-form-field>
+          <mat-label>
+              <mat-icon>person</mat-icon> Nazwisko
+            </mat-label>
+          <input formControlName="lastname"
+                 matInput placeholder="Nazwisko" 
+                 name="Lastname"
+                 value= "{{userData.lastname}}">
+                 <mat-error class="isValid-feedback">Musisz podać nazwisko</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>person</mat-icon> Nazwa użytkownika
+              </mat-label>
+          <input formControlName="username"
+                 matInput placeholder="Nazwa użytkownika" 
+                 name="Lastname"
+                 value= "{{userData.username}}">
+                 <mat-error class="isValid-feedback">Musisz podac nazwę użytkownika</mat-error>
+        </mat-form-field>
+      <mat-form-field>
+          <mat-label>
+              <mat-icon>email</mat-icon> Adres email
+            </mat-label>
+          <input formControlName="email"
+                 matInput placeholder="Adres Email" 
+                 name="Email" 
+                 value= "{{userData.email}}">
+                 <mat-error class="isValid-feedback">Musisz podac adres email</mat-error>
+          </mat-form-field>
+     
+   
+ 
+    <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center" >
+    <button  type="submit" class="lista" mat-raised-button color="accent">Aktualizuj</button>
+    <button class="lista" type="button"  mat-raised-button color="accent" >Powrot</button>
+    </mat-card-actions>
+
+    <mat-hint id="hint_properties" fxLayout fxLayoutAlign="center">Przycisk *<b>Aktualizuj </b>* będzie aktywny po wypełnieniu formularza  </mat-hint>
+  </mat-card-content>
+</form>
+</mat-card>
+</section>
+<!-- <p>form value : {{updateForm.value | json}}</p>
+<p>form value : {{updateForm.status | json}}</p> -->

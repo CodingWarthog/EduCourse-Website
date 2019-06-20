@@ -1,0 +1,82 @@
+.lista {
+    font-family: 'Raleway', sans-serif;
+    color: white
+  }
+  
+  .example-container>* {
+  
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 100%;
+  }
+  
+  .example-card {
+    height: 100%;
+  }
+  
+  .example-button-row {
+    align-content: center
+  }
+  
+  .new-training {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .title-card {
+    align-content: center
+  }
+  
+  .heder {
+    background-color: #f9fbfc;
+    //border: lightgrey solid 0.5pt; 
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .mat-header-cell {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .mat-cell {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .botton {
+    text-decoration-style: solid;
+    font-weight: 500
+  }
+  
+  .courses {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .mat-icon-button {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .btn_enlist {
+    //   padding-bottom: 5px;
+    //   padding-top: 0px;
+    //   height: 30px;
+    font-family: 'Raleway', sans-serif;
+    color: white
+  }
+  
+  .btn_delete {
+    //   padding-bottom: 5px;
+    //   padding-top: 0px;
+    //   height: 30px;
+    font-family: 'Raleway', sans-serif;
+    color: white
+  }
+  .OverLimit{
+    font-family: 'Raleway', sans-serif;
+    background-color: red;
+    color: white
+  }

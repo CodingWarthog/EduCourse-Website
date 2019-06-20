@@ -1,0 +1,49 @@
+<section *ngIf="!registerMode" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+    <mat-tab-group class="example-card" mat-align-tabs="center" animationDuration="2000ms"
+      (selectedTabChange)="handleClick($event)">
+
+      <mat-tab label="Zapisane kursy">
+        <ng-template matTabContent>
+          <app-my-courses></app-my-courses>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Polecane kursy">
+        <ng-template matTabContent>
+          <app-recommended-courses></app-recommended-courses>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="Dostępne kursy">
+        <ng-template matTabContent>
+          <app-available-courses></app-available-courses>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="Dostępne egzaminy">
+        <ng-template matTabContent>
+          <app-available-exams></app-available-exams>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab *ngIf="currentRole =='Nauczyciel'|| currentRole == 'Administrator'" label="Moje kursy">
+        <ng-template matTabContent>
+          <app-my-courses-created></app-my-courses-created>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab *ngIf="currentRole =='Nauczyciel'|| currentRole == 'Administrator'" label="Moje egzaminy">
+        <ng-template matTabContent>
+          <app-my-exams-created></app-my-exams-created>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab *ngIf="currentRole =='Nauczyciel'|| currentRole == 'Administrator'" label="Kategorie">
+        <ng-template matTabContent>
+          <app-add-category></app-add-category>
+        </ng-template>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card>
+</section>

@@ -1,0 +1,38 @@
+.lista {
+  font-family: 'Raleway', sans-serif;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.example-container>* {
+  padding-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  height: 100%;
+}
+
+.example-button-row {
+  align-content: center
+}
+
+mat-grid-tile {
+  background: white;
+
+}
+
+#hint_properties {
+  font-size: 13px
+}
+
+.mat_icon {
+  font-size: 40px;
+}
+.new-training {
+  padding-top: 30px;
+  text-align: center;
+}

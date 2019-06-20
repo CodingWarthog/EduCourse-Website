@@ -1,0 +1,72 @@
+{
+    "author" : [ {
+        "id": 1,
+        "age" : 16,
+        "name" : "Andy"
+      }, 
+      {
+        "id": 2,
+        "age" : 22,
+        "name" : "Lisa"
+      }
+    ],
+    "users" : [ 
+        {
+            "id": 1,
+            "firstname": "Mateusz",
+            "lastname": "Stroba",
+            "username": "mateusz1",
+            "role": "Administrator",
+            "email": "mateusz@gmail.com"
+        },
+        {
+            "id": 2,
+            "firstname": "",
+            "lastname": "",
+            "username": "john",
+            "role": "Administrator",
+            "email": ""
+        },
+        {
+            "id": 3,
+            "firstname": "studencik",
+            "lastname": "kjhg",
+            "username": "studencik",
+            "role": "Student",
+            "email": "std@aw.pl"
+        },
+        {
+            "id": 1002,
+            "firstname": "",
+            "lastname": "",
+            "username": "msjackson",
+            "role": "Administrator",
+            "email": ""
+        },
+        {
+            "id": 1003,
+            "firstname": null,
+            "lastname": null,
+            "username": "stroka",
+            "role": "Administrator",
+            "email": null
+        }
+    ],
+    "pictures" : [
+      {
+        "id": 1,
+        "author" : "Lisa",
+        "description" : "A wonderful view of nature",
+        "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+        "title" : "A natural view"
+      },
+    
+      {
+        "id": 2,
+        "author" : "Andy",
+        "description" : "Seaside sunset",
+        "img" : "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg",
+        "title" : "Landscape view"
+      }
+    ]
+}

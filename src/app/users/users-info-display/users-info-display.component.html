@@ -1,0 +1,38 @@
+        <!-- <mat-list class="lista" *ngFor="let user of users">
+            <mat-list-item class="lista">Imię : {{user.firstname}} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Nazwisko : {{user.lastname}} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Nazwa użytkownika : {{user.username}} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Adres Email : {{user.email}} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Płeć : {{user.gender}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Miejsce zamieszkania : {{user.city}} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="lista">Typ konta : {{user.role}}</mat-list-item>
+          </mat-list> -->
+          
+   
+          <mat-grid-list cols="2" rowHeight="2rem" *ngFor="let user of users"  fxLayout fxLayoutAlign="left" gutterSize="2px">
+            <mat-grid-tile-header ><p class="info">Dane użytkownika</p></mat-grid-tile-header>
+            <mat-grid-tile class="text-pos"><b><p class="info">Imię</p></b> </mat-grid-tile>
+            <mat-grid-tile><p class="info"> {{user.firstname}}</p></mat-grid-tile>
+            
+            <mat-grid-tile class="text-pos"><b><p class="info">Nazwisko</p></b></mat-grid-tile>
+            <mat-grid-tile><p class="info">{{user.lastname}}</p></mat-grid-tile>
+            
+            <mat-grid-tile class="text-pos"><b><p class="info">Nazwa użytkownika</p></b></mat-grid-tile>
+            <mat-grid-tile><p class="info">{{user.username}}</p></mat-grid-tile>
+           
+            <mat-grid-tile class="text-pos"><b><p class="info">Adres Email</p></b></mat-grid-tile>
+            <mat-grid-tile><p class="info">{{user.email}} </p></mat-grid-tile> 
+            
+            <mat-grid-tile class="text-pos"><b><p class="info">Przydzielone role</p></b></mat-grid-tile>
+            <mat-grid-tile><p class="info">{{user.role}}</p></mat-grid-tile>
+
+           
+            
+                        
+          </mat-grid-list>

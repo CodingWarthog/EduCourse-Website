@@ -1,0 +1,38 @@
+<app-loading-animation *ngIf="showSpinner"></app-loading-animation>
+<div>
+
+
+  <mat-table [dataSource]="dataSource" class="courses">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nazwa kursu </mat-header-cell>
+      <mat-cell *matCellDef="let courseEnrolments"> {{courseEnrolments.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Opis </mat-header-cell>
+      <mat-cell *matCellDef="let courseEnrolments"> {{courseEnrolments.description}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="other">
+      <mat-header-cell *matHeaderCellDef> Pozostałe informacje </mat-header-cell>
+      <mat-cell *matCellDef="let courseEnrolments"> {{courseEnrolments.other}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dismiss">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button (click)="deleteEnrolment(row)" mat-button mat-raised-button color="accent" class="btn_enlist"
+          [matMenuTriggerFor]="menu">
+          Zrezygnuj z kursu
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+  <mat-menu #menu="matMenu">
+
+
+  </mat-menu>
+</div>

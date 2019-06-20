@@ -1,0 +1,64 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="1000px" class="example-card">
+    <form class="example-container" [formGroup]="addBlockItemForm" (ngSubmit)="addItem()" autocomplete="off">
+      <mat-card fxLayout fxLayoutAlign="center">
+        <mat-card-header fxLayout fxLayoutAlign="center" class="heder">
+          <mat-card-title class="title-card">
+            <h4>Tworzenie Elementów Bloku</h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <br>
+      <mat-card-content *ngIf="isAddingEnabled == true" class="example-container">
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>create</mat-icon> Zawartość
+          </mat-label>
+          <input formControlName="content" matInput name="Firstname" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>looks_one</mat-icon> Pozycja elementu
+          </mat-label>
+          <input formControlName="blockPosition" matInput name="Lastname" required>
+        </mat-form-field>
+        <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center">
+          <button  type="submit" class="lista" mat-raised-button color="accent">Utworz element</button>
+          <button class="lista" type="button" mat-raised-button color="accent" routerLink="/courses">Zakończ dodawanie
+            elementów</button>
+        </mat-card-actions>
+      </mat-card-content>
+      <mat-card-content *ngIf="isAddingEnabled == false" class="OverLimit">
+          <h4>Dodano maksymalną liczbę bloczków dla tego egzaminu</h4>
+      </mat-card-content>
+    </form>
+    <br>
+    <div fxLayoutAlign="center center">
+    </div>
+    <mat-table [dataSource]="dataSource" class="courses">
+      <ng-container matColumnDef="content">
+        <mat-header-cell *matHeaderCellDef> Zawartość </mat-header-cell>
+        <mat-cell *matCellDef="let questions"> {{questions.content}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="blockPosition">
+        <mat-header-cell *matHeaderCellDef> Pozycja </mat-header-cell>
+        <mat-cell *matCellDef="let questions"> {{questions.blockPosition}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button (click)="deleteItem(row)" mat-button mat-raised-button color="warn" class="btn_delete"
+            [matMenuTriggerFor]="menu">
+            Usun pytanie
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    <mat-menu #menu="matMenu">
+    </mat-menu>
+  </mat-card>
+</section>

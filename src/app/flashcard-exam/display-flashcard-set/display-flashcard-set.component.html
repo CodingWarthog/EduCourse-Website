@@ -1,0 +1,56 @@
+<app-loading-animation *ngIf="showSpinner"></app-loading-animation>
+
+<div *ngIf="!showSpinner" fxLayoutAlign="center center">
+  
+</div>
+<mat-table [dataSource]="dataSource" class="courses" id="table">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Nazwa kursu </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="level">
+    <mat-header-cell *matHeaderCellDef> Opis </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.level}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="creationDate">
+    <mat-header-cell *matHeaderCellDef> Pozostałe informacje </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.creationDate | date:"MM-dd-yy"}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Nazwa kursu </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.description}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="other">
+    <mat-header-cell *matHeaderCellDef> Opis </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.other}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="userId">
+    <mat-header-cell *matHeaderCellDef> Pozostałe informacje </mat-header-cell>
+    <mat-cell *matCellDef="let flashcardSetForResponse"> {{flashcardSetForResponse.userId}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="checked">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button  (click)="getVal(row)" mat-button mat-raised-button color="accent" class="btn_enlist"><span
+          class="mat-button-wrapper"><mat-icon>launch</mat-icon></span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+    </mat-cell>
+ 
+  </ng-container>
+ 
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" >
+
+  </mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+              
+</mat-paginator>
+<mat-menu #menu="matMenu">
+
+</mat-menu>

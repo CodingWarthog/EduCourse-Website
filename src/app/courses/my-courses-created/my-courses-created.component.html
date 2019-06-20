@@ -1,0 +1,41 @@
+<div fxLayoutAlign="center center">
+
+</div>
+<mat-table [dataSource]="dataSource" class="courses">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Nazwa kursu </mat-header-cell>
+    <mat-cell *matCellDef="let userCourses"> {{userCourses.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Opis </mat-header-cell>
+    <mat-cell *matCellDef="let userCourses"> {{userCourses.description}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="other">
+    <mat-header-cell *matHeaderCellDef> Pozostałe informacje </mat-header-cell>
+    <mat-cell *matCellDef="let userCourses"> {{userCourses.other}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell  *matCellDef="let row">
+      <button  (click)="getVal(row)" mat-button mat-raised-button color="accent" class="btn_enlist"  [matMenuTriggerFor]="menu">
+        Dodaj egzamin
+      </button>
+      <button (click)="deleteCourse(row)" mat-button mat-raised-button color="warn" class="btn_enlist"  [matMenuTriggerFor]="menu">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<a  routerLink="/addcourse">
+  <button mat-icon-button class="tekst"><mat-icon class="icon-header" color="accent">add_box</mat-icon>Dodaj nowy kurs</button> 
+ </a>  
+<mat-paginator #paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<mat-menu #menu="matMenu">
+
+  
+</mat-menu>

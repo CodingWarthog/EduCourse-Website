@@ -1,0 +1,31 @@
+.mat-header-cell {
+    display:flex;
+    justify-content:center;
+   
+}
+.mat-cell {
+    display:flex;
+    justify-content:center;
+   
+}
+
+.botton {
+    text-decoration-style: solid;
+    font-weight: 500
+}
+.courses{
+    font-family: 'Raleway', sans-serif;
+}
+.mat-icon-button{
+    font-family: 'Raleway', sans-serif;
+  }
+  .btn_delete{
+      margin-right: 4px;
+    //   padding-top: 0px;
+    //   height: 30px;
+    //   font-size: 15px
+    color: white
+  }
+  .ikona_pdf{
+      margin-right: 4px;
+  }

@@ -1,0 +1,42 @@
+<!-- <app-loading-animation *ngIf="showSpinner"></app-loading-animation>
+<div *ngIf="!showSpinner" fxLayoutAlign="center center"> -->
+
+<div fxLayoutAlign="center center">
+
+</div>
+<mat-table [dataSource]="dataSourceExam" class="courses">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Nazwa egzaminu </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="numberOfQuestions">
+    <mat-header-cell *matHeaderCellDef> Liczba pytań </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.numberOfQuestions}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalExamPoints">
+    <mat-header-cell *matHeaderCellDef> Liczba punktow </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.totalExamPoints}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="level">
+    <mat-header-cell *matHeaderCellDef> Poziom trudności </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.level}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="dismiss">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell #box *matCellDef="let arr , let row">
+      <button (click)="solveExam(row, arr.timeLimit, arr.totalExamPoints)" mat-button mat-raised-button color="accent" class="btn_enlist" [matMenuTriggerFor]="menu">
+        Otworz
+      </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<mat-menu #menu="matMenu">
+
+
+</mat-menu>

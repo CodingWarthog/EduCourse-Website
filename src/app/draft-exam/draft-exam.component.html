@@ -1,0 +1,104 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-card class="card" fxFlex="65%" fxFlex.xs="100%" class="ifk">
+
+    <mat-card-header> Ułóż w poprawnej kojeności </mat-card-header>
+    <mat-card class="action_button">
+      <!-- <h3>Action Buttons</h3> -->
+      <div class="draft-option-panel">
+        <div class="left_menu" fxFlex fxLayout>
+          <button mat-raised-button class="timer">{{days}} d</button>
+          <button mat-raised-button class="timer">{{hours}} h</button>
+          <button mat-raised-button class="timer">{{minutes | number : '1.00'}} m </button>
+          <button mat-raised-button class="timer">{{seconds }} s</button>
+
+          <!-- <button *ngIf="buttonReverse===true" mat-mini-fab color="warn" (click)='pauseTimer()'>
+            <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
+          </button>
+          <button *ngIf="buttonReverse===false" mat-mini-fab (click)='startTimer()'>
+            <mat-icon aria-label="Example icon-button with a heart icon" class="play-icon">play_arrow</mat-icon>
+          </button> -->
+        </div>
+        <!-- <div class="right_menu" fxFlex fxLayout fxLayoutAlign="flex-end">
+
+          <button mat-mini-fab class="draft-icon" matTooltip="You can submit solution without waiting for end of time">
+            <mat-icon aria-label="draft-icon">edit</mat-icon>
+          </button>
+          <button mat-mini-fab class="draft-icon" matTooltip="Check solution">
+            <mat-icon aria-label="draft-icon">visibility</mat-icon>
+          </button>
+          <button mat-mini-fab class="draft-icon" matTooltip="Get hint">
+            <mat-icon aria-label="draft-icon">help</mat-icon>
+          </button>
+        </div> -->
+      </div>
+    </mat-card>
+
+    <div gdAreas=" content" gdGap="10px" gdRows="auto" gdAreas.lt-md="content" gdRows.lt-md="auto auto auto auto">
+
+      <!-- <div gdArea="side">
+          <mat-card>
+            <div class="example-container">
+  
+  
+              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+                class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                  <mat-icon>{{item}}</mat-icon>
+                  <form class="example-form">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="" value="">
+                      </mat-form-field>
+    
+                    </form>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+   -->
+      <div gdArea="content">
+        <mat-card>
+          <div class="example-container">
+
+
+            <!-- <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" class="example-list"
+              (cdkDropListDropped)="drop($event)"> -->
+              <!-- <div class="example-box" [ngStyle]="{'background-color':setTrue == true ? '#00c853' : '#f44336' }"
+                  [style.color]="setTrue == true ? 'white':'black'" *ngFor="let item of blockItems" cdkDrag>
+                  <mat-icon></mat-icon>{{item.content}}
+                  <form class="example-form">
+
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="" value="">
+                    </mat-form-field>
+  
+                  </form>
+  
+                </div> -->
+              <div cdkDropList class="example-list"
+               (cdkDropListDropped)="drop($event)"
+                [cdkDropListData]="blockItems">
+
+                <div class="example-box"  [ngStyle]="{'background-color':setTrue == true ? '#00c853' : '#f44336' }"
+                [style.color]="setTrue == true ? 'white':'black'"  *ngFor="let movie of blockItems" cdkDrag><input type='hidden'
+                    value={{movie.blockPosition}} />{{movie.content}} <input type='hidden' value='{{movie.blockPosition}}' /></div>
+              </div>
+
+            </div>
+          
+
+        </mat-card>
+        <!-- <mat-card class="action_button-bottom"> -->
+          <!-- <h3>Action Buttons</h3> -->
+          <!-- <div class="draft-option-panel-bottom">
+            <div class="right_menu" fxFlex fxLayout fxLayoutAlign="flex-end">
+              <button mat-raised-button class="draft-option-panel-bottom-button" color="accent">button</button>
+              <button mat-raised-button class="draft-option-panel-bottom-button" color="accent">button</button>
+            </div>
+          </div>
+        </mat-card> -->
+      </div>
+
+    </div>
+  </mat-card>
+</div>

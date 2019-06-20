@@ -1,0 +1,45 @@
+<mat-table [dataSource]="dataSourceExam" class="courses">
+
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Nazwa egzaminu </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="numberOfQuestions">
+    <mat-header-cell *matHeaderCellDef> Liczba pytań </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.numberOfQuestions}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalExamPoints">
+    <mat-header-cell *matHeaderCellDef> Liczba punktow</mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.totalExamPoints}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="level">
+    <mat-header-cell *matHeaderCellDef> Poziom trudności </mat-header-cell>
+    <mat-cell *matCellDef="let arr"> {{arr.level}} </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button (click)="getExamId(row)" mat-button mat-raised-button color="accent" class="btn_enlist"
+        [matMenuTriggerFor]="menu">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button (click)="deleteExam(row)" mat-button mat-raised-button color="warn" class="btn_enlist"
+        [matMenuTriggerFor]="menu">
+        <mat-icon>delete</mat-icon>
+      </button></mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<mat-menu #menu="matMenu">
+
+
+</mat-menu>

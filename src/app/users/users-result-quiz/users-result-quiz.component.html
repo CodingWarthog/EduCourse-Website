@@ -1,0 +1,39 @@
+<div fxLayoutAlign="center center">
+
+</div>
+<mat-table [dataSource]="dataSourceExamResult" class="courses">
+
+  <ng-container matColumnDef="result">
+    <mat-header-cell *matHeaderCellDef> Wynik </mat-header-cell>
+    <mat-cell *matCellDef="let userExamResults"> {{userExamResults.mark}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="resultPoints">
+    <mat-header-cell *matHeaderCellDef> Wynik punktowy </mat-header-cell>
+    <mat-cell *matCellDef="let userExamResults"> {{userExamResults.points}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalExamPoints">
+    <mat-header-cell *matHeaderCellDef> Maksymalna liczba punktow </mat-header-cell>
+    <mat-cell *matCellDef="let userExamResults"> {{userExamResults.totalExamPoints}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="percentage">
+    <mat-header-cell *matHeaderCellDef> Wynik procentowy </mat-header-cell>
+    <mat-cell *matCellDef="let userExamResults">
+      <mat-progress-bar mode="determinate" class="progbar" value="{{userExamResults.percentage}}"></mat-progress-bar>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="examName">
+    <mat-header-cell *matHeaderCellDef> Nazwa egzaminu </mat-header-cell>
+    <mat-cell *matCellDef="let userExamResults"> {{userExamResults.examName}} </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+<mat-menu #menu="matMenu">
+
+
+</mat-menu>

@@ -1,0 +1,27 @@
+<section *ngIf="!registerMode" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+    <mat-tab-group class="example-card" mat-align-tabs="center" animationDuration="2000ms" >
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon"> photo </mat-icon>
+         Materiały - Obrazki
+        </ng-template>
+        <app-image-assets></app-image-assets>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">movie</mat-icon>
+          Materiały - Klipy video
+        </ng-template>
+        <app-video-assets></app-video-assets>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">description</mat-icon>
+          Materiały - Dokumenty PDF
+        </ng-template>
+        <app-document-assets></app-document-assets>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</section>

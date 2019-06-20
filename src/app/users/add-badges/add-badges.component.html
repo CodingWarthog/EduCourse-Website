@@ -1,0 +1,147 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="100%" class="example-card">
+    <!-- <form class="example-container" [formGroup]="addBadgeForm" (ngSubmit)="addCourse()" autocomplete="off">
+
+      <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+      <mat-card fxLayout fxLayoutAlign="center">
+        <mat-card-header fxLayout fxLayoutAlign="center center" >
+          <mat-card-title  fxLayout fxLayoutAlign="center ">
+            <mat-icon class="mat_icon">fitness_center</mat-icon>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-card-content class="example-container">
+
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>fitness_center</mat-icon> Nazwa Odznaki
+          </mat-label>
+          <input formControlName="name" matInput name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>monetization_on</mat-icon> Liczba wymaganych punktów aby zdobyć odznakę
+          </mat-label>
+          <input formControlName="experiencePoints" matInput name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>create</mat-icon> Opis
+          </mat-label>
+          <input formControlName="description" matInput name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+              <mat-icon>image</mat-icon> Obraz
+            </mat-label>
+            <input formControlName="image" matInput name="Firstname" value="">
+          </mat-form-field>
+        <mat-form-field>
+          <mat-label><mat-icon>view_comfy</mat-icon> Select an option</mat-label>
+          <mat-select [(value)]="selected" formControlName="categoryid" >
+            <mat-option *ngFor="let cat of category" value='{{cat.id}}'>{{cat.name}}</mat-option>  
+          </mat-select>
+          </mat-form-field>
+
+        <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center">
+          <button type="submit" class="lista" mat-raised-button color="accent">Utworz odznakę</button>
+        </mat-card-actions>
+      </mat-card-content>
+    </form> -->
+
+    <form>
+     
+      <mat-card-content class="example-container">
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>fitness_center</mat-icon> Nazwa Odznaki
+          </mat-label>
+          <input matInput class="form-control" id="name" name="name" placeholder="Enter your name" [(ngModel)]="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>monetization_on</mat-icon> Liczba wymaganych punktów aby zdobyć odznakę
+          </mat-label>
+          <input matInput class="form-control" id="experiencePoints" name="experiencePoints" placeholder="Enter your address" [(ngModel)]="experiencePoints">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>create</mat-icon> Opis
+          </mat-label>
+          <input matInput class="form-control" id="description" name="description" placeholder="Enter your address" [(ngModel)]="description">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>
+            <mat-icon>view_comfy</mat-icon> Select an option
+          </mat-label>
+          <mat-select [(value)]="selected" name="categoryid" [(ngModel)]="categoryid">
+            <mat-option *ngFor="let cat of category" value='{{cat.id}}'>{{cat.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        
+
+        <mat-form-field *ngIf="swapUploader.checked" >
+            <mat-label>
+              <mat-icon>create</mat-icon> Url obrazka
+            </mat-label>
+            <input matInput class="form-control" id="image" name="image" placeholder="Enter your address" [(ngModel)]="image">
+          </mat-form-field>
+
+        <app-upload *ngIf="!(swapUploader.checked)"  (onUploadFinished)="uploadFinished($event)"></app-upload>
+
+        <mat-slide-toggle #swapUploader 
+        [checked]="checked">Plik / Url Pliku</mat-slide-toggle>
+
+
+          <div class="offset-md-5 col-md-2">
+            <button type="button" class="lista" mat-raised-button color="accent" (click)="addBadgeNew()">Dodaj odznakę </button>
+          </div>
+       
+      </mat-card-content>
+
+    </form>
+
+
+    <mat-table [dataSource]="dataSource" class="courses">
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> Nazwa Odznaki </mat-header-cell>
+        <mat-cell *matCellDef="let badges">
+          <img *ngIf="contain(badges.image) == false" mat-card-image [src]="createImgPath(badges.image)" alt="Photo of a Shiba Inu">
+          <img *ngIf="contain(badges.image) == true" mat-card-image [src]="(badges.image)" alt="Photo of a Shiba Inu"> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nazwa Odznaki </mat-header-cell>
+        <mat-cell *matCellDef="let badges"> {{badges.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="experiencePoints">
+        <mat-header-cell *matHeaderCellDef> Wymagane punkty doświadczenia </mat-header-cell>
+        <mat-cell *matCellDef="let badges"> {{badges.experiencePoints }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Ikona </mat-header-cell>
+        <mat-cell *matCellDef="let badges"> {{badges.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button (click)="deleteBadge(row)" mat-button mat-raised-button color="warn" class="btn_delete" [matMenuTriggerFor]="menu">
+            Usun odznakę
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    <mat-menu #menu="matMenu">
+    </mat-menu>
+  </mat-card>
+</section>

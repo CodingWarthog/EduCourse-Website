@@ -1,0 +1,12 @@
+<mat-card>
+    <input type="file"  #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+    <button  color="accent" mat-button mat-raised-button type="button" class="uploadbutton" (click)="file.click()">Dodaj obraz z dysku</button>
+  </mat-card>
+  <div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+      {{progress}}%
+    </span>
+    <span class="upload" *ngIf="message">
+      {{message}}
+    </span>
+  </div>

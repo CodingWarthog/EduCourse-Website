@@ -1,0 +1,131 @@
+<section *ngIf="!registerMode" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+
+    <!-- <mat-card-title> <img class ="imgage" mat-card-image src="../../assets/cooltext326244484900190.png" alt="Photo of Elearning"></!--> 
+  
+      <div *ngIf=" loggedIn()" class="example-button-row">
+      <button mat-raised-button color="accent" class="switch" (click)="selectChartStatistics()"><mat-icon>bar_chart</mat-icon></button>
+      <button mat-raised-button color="accent" class="switch" (click)="selectTableStatistics()"><mat-icon>list</mat-icon></button>
+      <br>  
+      </div>
+    <!-- Charts -->
+
+<mat-card  *ngIf=" loggedIn() && statisticSelector==false">
+    <mat-card-header><mat-card-title><b>Dane ogólne</b></mat-card-title></mat-card-header>
+    <mat-grid-list  cols="4" rowHeight="2rem"   fxLayout fxLayoutAlign="left" gutterSize="2px">
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostępnych kursów</p></b> </mat-grid-tile>
+        <mat-grid-tile><p class="info"> {{overallStatistic.numberOfCourse}}</p></mat-grid-tile>
+        
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostepnych egzaminów</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfExams}}</p></mat-grid-tile>
+        
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostepnych materiałów</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfEMaterials}}</p></mat-grid-tile>
+       
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba zestawów</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfSets}} </p></mat-grid-tile> 
+        
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba zarejstrowanych użytkowników</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfERegisteredUsers}}</p></mat-grid-tile>
+        
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba kategorii</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfCategory}}</p></mat-grid-tile>
+       
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostępnych odznak</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{overallStatistic.numberOfBadges}} </p></mat-grid-tile> 
+
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba negatywnych ocen</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{markStatistic.numberOfNegativeMarks}}</p></mat-grid-tile>
+       
+        <mat-grid-tile class="text-pos"><b><p class="info">Liczba pozytywnych ocen</p></b></mat-grid-tile>
+        <mat-grid-tile><p class="info">{{markStatistic.numberOfPositiveMarks}} </p></mat-grid-tile> 
+           
+      </mat-grid-list>
+    </mat-card>
+      <br>
+      <mat-card *ngIf="loggedIn() && statisticSelector==false">
+          <mat-card-header><mat-card-title>Dane personalne</mat-card-title></mat-card-header>
+      <mat-grid-list  cols="4" rowHeight="2rem"   fxLayout fxLayoutAlign="left" gutterSize="2px">
+          <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostępnych kursów</p></b> </mat-grid-tile>
+          <mat-grid-tile><p class="info"> {{personalStatistics.numberOfAddedCourses}}</p></mat-grid-tile>
+          
+          <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostepnych egzaminów</p></b></mat-grid-tile>
+          <mat-grid-tile><p class="info">{{personalStatistics.numberOfAddedMaterials}}</p></mat-grid-tile>
+          
+          <mat-grid-tile class="text-pos"><b><p class="info">Liczba kategorii</p></b></mat-grid-tile>
+          <mat-grid-tile><p class="info">{{personalStatistics.numberOfAssignedBadges}}</p></mat-grid-tile>
+         
+          <mat-grid-tile class="text-pos"><b><p class="info">Liczba zestawów</p></b></mat-grid-tile>
+          <mat-grid-tile><p class="info">{{personalStatistics.numberOfEnrolmentCourses}} </p></mat-grid-tile> 
+          
+          <mat-grid-tile class="text-pos"><b><p class="info">Liczba dostępnych kursów</p></b> </mat-grid-tile>
+          <mat-grid-tile><p class="info"> {{personalStatistics.numberOfEnrolmentExams}}</p></mat-grid-tile>
+             
+        </mat-grid-list>
+      </mat-card>
+    <mat-card *ngIf="loggedIn() && statisticSelector==true">
+    <google-chart 
+    [data]="personalData"
+    [type]="BarChart"
+    [title]="statitistiCourse"
+    [options]="myOptions"></google-chart>
+    </mat-card>
+    <br>
+    <mat-card *ngIf="loggedIn() && statisticSelector==true">
+    <google-chart 
+    [data]="overall_statistics_data" 
+    [type]="ColumnChart"
+    [title]="statitistiCourse"
+    [options]="myOptions"></google-chart>
+    </mat-card>
+    <br>
+
+    <div  *ngIf="loggedIn() && statisticSelector==true" gdAreas="side content" gdGap="10px" gdRows="auto" gdAreas.lt-md="side | content" gdRows.lt-md="auto auto auto auto">
+        <div gdArea="side" class="lewywykres">
+          <mat-card>
+             
+                  <google-chart 
+                  [data]="myData" 
+                  [title]="statitistiCourse"
+                  [type]="Pie"
+                  [options]="myOptions"></google-chart>
+                
+          </mat-card>
+        </div>
+  
+        <div gdArea="content" class="prawywykres">
+          <mat-card>
+
+                  <google-chart 
+                  [data]="overall_statistics_data" 
+                  [type]="Pie"
+                  [title]="statitistiCourse"
+                  [options]="myOptions"></google-chart>
+                
+          </mat-card>
+      
+        </div>
+  
+      </div>
+
+
+
+
+
+    <img *appDyrektywa="5000" mat-card-image src="../../assets/FeaturedCourse-2.jpg" alt="Photo of Elearning">
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  *ngIf="!loggedIn()" mat-button mat-raised-button color="primary" id="register" routerLink="/register">
+        <mat-icon>person_add</mat-icon> Rejestracja
+      </button>
+      <button *ngIf="!loggedIn()" mat-button mat-raised-button color="primary" id="login" routerLink="/login">
+        <mat-icon>person</mat-icon> Logowanie
+      </button>
+      <button *ngIf="loggedIn()" mat-button mat-raised-button color="primary" id="login2" (click)="logOut()">
+        <mat-icon>person</mat-icon> Wyloguj
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+</section>

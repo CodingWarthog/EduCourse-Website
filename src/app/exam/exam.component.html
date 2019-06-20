@@ -1,0 +1,148 @@
+<section *ngIf="!terminateExam" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%"  fxFlex="65%">
+    <div class="flip-container">
+      <mat-card class="karta">
+        <h3>Zestaw : Słownictwo</h3>
+        <mat-card class="action_button">
+            <!-- <h3>Action Buttons</h3> -->
+            <div class="draft-option-panel">
+              <div class="left_menu" fxFlex fxLayout>
+                <button mat-raised-button class="timer">{{days}} d</button>
+                <button mat-raised-button class="timer">{{hours}} h</button>
+                <button mat-raised-button class="timer">{{minutes | number : '1.00'}} m </button>
+                <button mat-raised-button class="timer">{{seconds }} s</button>
+      
+               
+              </div>
+              <!-- <div class="right_menu" fxFlex fxLayout fxLayoutAlign="flex-end">
+      
+                <button mat-mini-fab class="draft-icon" matTooltip="You can submit solution without waiting for end of time">
+                  <mat-icon aria-label="draft-icon">edit</mat-icon>
+                </button>
+                <button mat-mini-fab class="draft-icon" matTooltip="Check solution">
+                  <mat-icon aria-label="draft-icon">visibility</mat-icon>
+                </button>
+                <button mat-mini-fab class="draft-icon" matTooltip="Get hint">
+                  <mat-icon aria-label="draft-icon">help</mat-icon>
+                </button>
+              </div> -->
+            </div>
+          </mat-card>
+      </mat-card>
+      <br>
+      <mat-card class="karta">
+        {{questionForExams.question1}}
+      </mat-card>
+      <br>
+
+      <mat-card-content *ngIf="!isTestSelector()" class="quiz">
+        <form [formGroup]="answerForm">
+          <mat-card>
+            {{questionForExams.question1}}
+            <br>
+            <mat-form-field>
+              <input formControlName="answer" matInput placeholder="Odpowiedż" name="Firstname">
+              <mat-error class="isValid-feedback">Wprowadz odpowiedz</mat-error>
+            </mat-form-field><br>
+
+
+          </mat-card>
+        </form>
+      </mat-card-content>
+      <mat-card-content *ngIf="isTestSelector()" class="quiz">
+        <mat-button-toggle-group #group="matButtonToggleGroup" vertical (change)="getAnswer(group.value) " 
+        (keydown.Enter)="handleKeyEvent( $event, 'Enter' )"
+        (keydown.1)="handleKeyEvent( $event, '1', questionForExams.optionOne )"
+        (keydown.2)="handleKeyEvent( $event, '2', questionForExams.optionTwo )"
+        (keydown.3)="handleKeyEvent( $event, '3' , questionForExams.optionThree)"
+        (keydown.4)="handleKeyEvent( $event, '4', questionForExams.optionFour )">
+        
+          <mat-button-toggle  [ngStyle]="jeden" id="jeden" class="jeden"  value="{{questionForExams.optionOne}}"  >
+            <mat-icon  class="center">looks_one</mat-icon> Odpowiedż numer 1 : {{questionForExams.optionOne}}
+          </mat-button-toggle>
+          <mat-button-toggle  [ngStyle]="dwa" class="togle" fxLayout fxLayoutAlign="left" value="{{questionForExams.optionTwo}}" >
+            <mat-icon class="center">looks_two</mat-icon> Odpowiedż numer 2 : {{questionForExams.optionTwo}}
+          </mat-button-toggle>
+          <mat-button-toggle  [ngStyle]="trzy" class="togle" fxLayout fxLayoutAlign="left" value="{{questionForExams.optionThree}}">
+            <mat-icon class="center">looks_3</mat-icon> Odpowiedż numer 3 : {{questionForExams.optionThree}}
+          </mat-button-toggle>
+          <mat-button-toggle  [ngStyle]="cztery" class="togle" fxLayout fxLayoutAlign="left" value="{{questionForExams.optionFour}}">
+            <mat-icon class="center">looks_4</mat-icon> Odpowiedż numer 4 : {{questionForExams.optionFour}}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+      </mat-card-content>
+
+    </div>
+    <mat-card-footer>
+
+
+      <br> <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br><br>
+      <mat-card-actions>
+        <button (click)="answerHistory()" class="btn-flashcard" mat-button mat-raised-button id="previous">Zakończ test</button>
+        <!-- <button (click)="deiterate()" class="btn-flashcard" mat-button mat-raised-button id="previous">Poprzednia</button> -->
+        <button [ngStyle]="enter" (click)="iterate()" class="btn-flashcard" mat-button mat-raised-button id="next">Następna</button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</section>
+<!-- 
+<p>form value : {{answerForm.value | json}}</p>
+<p>form value : {{answerForm.status | json}}</p> -->
+
+
+<section *ngIf="terminateExam" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="1000px">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <mat-card-title-group>
+            Przęgląd testu
+          </mat-card-title-group>
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <br>
+    <mat-grid-tile-header class="text-pos">
+      <h2>Sprawdzenie odpowiedzi</h2>
+    </mat-grid-tile-header>
+    <mat-grid-tile-header class="ocena">
+      <h4>Ocena : {{examResultVerdict}}</h4>
+    </mat-grid-tile-header>
+
+    <mat-grid-list cols="2" rowHeight="2rem" *ngFor="let ans of answerArray; let i = index" fxLayout fxLayoutAlign="left">
+
+      <div *ngIf="(ans) == ('Poprawna odpowiedż')">
+        <mat-grid-tile><b>Pytanie numer {{i + 1}} </b> </mat-grid-tile>
+        <mat-grid-tile class="positive">{{ans}}</mat-grid-tile>
+      </div>
+      <div *ngIf="(ans) == ('Błędna odpowiedż')">
+        <mat-grid-tile><b>Pytanie numer {{i + 1}} </b> </mat-grid-tile>
+        <mat-grid-tile class="negative">{{ans}}</mat-grid-tile>
+      </div>
+    </mat-grid-list>
+    <br>
+
+    <mat-grid-list cols="2" rowHeight="2rem" *ngFor="let q of qfe; let i = index" fxLayout fxLayoutAlign="left">
+
+      <div>
+        <mat-grid-tile><b>Pytanie numer {{i + 1}} : {{q.question1}} </b> </mat-grid-tile>
+        <mat-grid-tile class="positive">{{q.answer}}</mat-grid-tile>
+      </div>
+      
+    </mat-grid-list>
+    <br>
+    <br>
+    <button routerLink="/users" class="btn-flashcard" mat-button mat-raised-button id="next">Zobacz wszystkie wyniki</button>
+  </mat-card>
+</section>

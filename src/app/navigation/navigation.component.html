@@ -1,0 +1,59 @@
+<mat-toolbar class="header-toolbar" color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="menu-left" fxLayoutAlign="flex-end" fxHide.xs>
+    <a class="nav-link" [routerLink]="['/']">
+      <mat-icon class="icon-header">home</mat-icon><span class="sr-only"></span>
+    </a>
+  </div>
+  <div class="menu-right" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+      <li>
+        <a *ngIf="!loggedIn()" routerLink="/login">
+          <mat-icon class="icon-header">person</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a *ngIf="!loggedIn()" routerLink="/register">
+          <mat-icon class="icon-header">person_add</mat-icon>
+        </a>
+      </li>
+      
+      <li>
+        <a *ngIf="loggedIn()" style="cursor: pointer" (click)="logOut()">
+          <mat-icon class="icon-header">directions_run</mat-icon>
+        </a>
+      </li>
+      <li>
+        <button *ngIf="loggedIn()" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/users']">
+            <mat-icon>person</mat-icon>
+            <span>Moje konto</span>
+          </button>
+          <button mat-menu-item [routerLink]="['/flashcard_exam']">
+            <mat-icon>swap_horiz</mat-icon>
+            <span>Dostępne zestawy fiszek</span>
+          </button>
+          <button mat-menu-item routerLink="/courses">
+            <mat-icon>group</mat-icon>
+            <span>Dostępne kursy</span>
+          </button>
+          <button mat-menu-item routerLink="/material">
+            <mat-icon>folder_shared</mat-icon>
+            <span>Materiały szkoleniowe</span>
+          </button>
+          
+        </mat-menu>
+      </li>
+      <li>
+
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

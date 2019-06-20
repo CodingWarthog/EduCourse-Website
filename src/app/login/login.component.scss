@@ -1,0 +1,32 @@
+mat-form-field {
+  width: 300px;
+}
+
+.card-center {
+  margin-top: 2%;
+  position: relative;
+}
+
+
+mat-icon{
+  font-size: 15px;
+}
+
+.icon-space {
+  color: gray;
+  margin-bottom: 10%;
+  font-size: 80px;
+}
+
+.login-button {
+  color: white
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}

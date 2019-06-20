@@ -1,0 +1,58 @@
+
+  <section  class="new-training" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="1000px" class="example-card">
+<form class="example-container"[formGroup]="addFlashcardSetForm" (ngSubmit)="addFlashcardSet()" autocomplete="off" >
+
+  <mat-card fxLayout fxLayoutAlign="center">
+    <mat-card-header fxLayout fxLayoutAlign="center" class="heder">
+        <mat-card-title class="title-card"><h4>Tworzenie zestawu fiszek</h4></mat-card-title>
+    </mat-card-header>
+    </mat-card>
+  <!-- <mat-form-field>
+    <input type="hidden" matInput placeholder="Firstname" name="Id" #Id="ngModel" [(ngModel)]="userService.formData.Id">
+  </mat-form-field> -->
+  <mat-card-content class="example-container">
+    
+    <mat-form-field>
+          <input formControlName="name" 
+                 matInput placeholder="Nazwa zestawu" 
+                 name="Firstname"
+                 value=""> 
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="level"
+                 matInput placeholder="Poziom trudności" 
+                 name="Lastname">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker"  
+          placeholder="Data urodzenia"
+          formControlName="creationDate"
+          class="form-cotrol">
+  
+          <mat-datepicker-toggle matSuffix [for]="picker">Data utworzenia</mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error class="isValid-feedback">Data utworzenia</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="description" 
+                 matInput placeholder="Opis" 
+                 name="Firstname"
+                 value=""> 
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="other"
+                 matInput placeholder="Pozostałe informacje" 
+                 name="Lastname">
+        </mat-form-field>
+
+    <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center" >
+    <button  type="submit" class="lista" mat-button mat-raised-button color="accent">Utworz egzamin</button>
+    <button class="lista" type="button"  mat-button mat-raised-button color="primary" routerLink="/flashcard_exam" >Powrot</button>
+    </mat-card-actions>
+
+  </mat-card-content>
+</form>
+</mat-card>
+</section>

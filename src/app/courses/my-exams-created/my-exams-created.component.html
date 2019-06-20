@@ -1,0 +1,18 @@
+<section *ngIf="!registerMode" class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="100%" class="example-card">
+    <mat-tab-group class="example-card" mat-align-tabs="center" animationDuration="2000ms" (selectedTabChange)="handleClick($event)">
+      <mat-tab label="Wybieranie">
+        <ng-template matTabContent>
+          <app-normal></app-normal>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Ustalanie kolejności">
+        <ng-template matTabContent>
+          <app-draft></app-draft>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</section>
+
+

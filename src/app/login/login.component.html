@@ -1,0 +1,35 @@
+<app-loading-animation *ngIf="showSpinner"></app-loading-animation>
+<section *ngIf="!showSpinner" class="signup-form" fxLayout fxLayoutAlign="center">
+
+  <mat-card fxFlex.xs="100%" fxFlex="550px" class="card-center">
+    <mat-card-title fxLayoutAlign="center">
+      <mat-icon class="icon-space" fxLayout fxLayoutAlign="center">
+        person
+      </mat-icon>
+    </mat-card-title>
+    <form *ngIf="!loggedIn()" #loginForm="ngForm" (ngSubmit)="login()" class="example-container">
+      <mat-form-field hintLabel="Nazwa użytkownika powinna zawierać minimum 4 znaki oraz maksymalnie 10 znaków">
+        <input type="text" matInput placeholder="Your Login" name="username" [(ngModel)]="model.username"
+          placeholder="Username" login required>
+
+        <mat-label>
+          <mat-icon>account_circle</mat-icon> Nazwa użytkownika
+        </mat-label>
+      </mat-form-field>
+      <mat-form-field hintLabel="Hasło powinno zawierać minimum 4 znaki oraz maksymalnie 10 znaków">
+        <input type="password" matInput placeholder="Your password" name="password" [(ngModel)]="model.password"
+          placeholder="Password" minlength="4" maxlength="10" required>
+        <mat-label>
+          <mat-icon>vpn_key</mat-icon> Hasło
+        </mat-label>
+      </mat-form-field>
+      <mat-card-actions fxLayout fxLayoutAlign="center">
+        <button id ="zaloguj" [disabled]="!loginForm.valid" class="login-button" type="submit" mat-raised-button
+          color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
+
+<!-- <p>form value : {{registerForm.value | json}}</p>
+<p>form value : {{registerForm.status | json}}</p> -->

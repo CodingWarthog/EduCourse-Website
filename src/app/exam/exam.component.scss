@@ -1,0 +1,220 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+  height: 100%;
+}
+.example-card {
+  height: 100%;
+}
+.heder {
+  background-color: whitesmoke;
+  border: lightgrey solid 0.5pt;
+  border-radius: 15px;
+}
+.answer {
+  height: 30px;
+  width: 100%;
+}
+.new-training {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.btn_enlist {
+  background-color: orange;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  color: white;
+}
+#btn_easy {
+  background-color: #33ff66;
+}
+#btn_hard {
+  background-color: #ff3333;
+}
+#previous {
+  background-color: #6699ff;
+  color: white;
+}
+#next {
+  background-color: #6699ff;
+  color: white;
+}
+.btn-flashcard {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.example-card {
+  border: 20px;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  font-family: "Raleway", sans-serif;
+  background-color: #6699ff;
+  color: white;
+}
+
+// .mat-chip-list, .mat-card-actions, .mat-chip, .button{
+//     font-family: 'Raleway', sans-serif;
+//     color: whitesmoke;
+
+// }
+
+/*
+   *  Flip animation by David Walsh: https://davidwalsh.name/css-flip
+   */
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+}
+
+/* flip the pane when hovered */
+.flip-container.flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container,
+.front,
+.back {
+  width: 45vw;
+  height: 20vh;
+  margin: 20px auto;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 2s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front,
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ecf0f1;
+  backface-visibility: hidden;
+  -webkit-box-shadow: 0px 8px 4px -4px rgba(163, 163, 163, 0.25);
+  -moz-box-shadow: 4px 8px 4px -4px rgba(163, 163, 163, 0.25);
+  box-shadow: 0px 8px 4px -4px rgba(163, 163, 163, 0.25);
+  border: 1px solid #dee2e3;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+mat-grid-tile {
+  background: lightblue;
+  margin-top: 10px;
+  border: white solid 2px;
+  font-family: "Raleway", sans-serif;
+  border-radius: 10px;
+}
+
+.text-pos {
+  font-family: "Raleway", sans-serif;
+}
+.positive {
+  background: #33ff66;
+}
+.negative {
+  background: #ff3333;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  margin: 1%;
+}
+.divid {
+  margin: 20 20px;
+  font-size: 150%;
+}
+.baton {
+  font-size: 30px;
+}
+.example-selected-value {
+  margin: 15px 0;
+}
+.mat-button-toggle-group {
+  width: 100%;
+}
+// .center{
+
+// }
+.togle {
+  // background-color: blueviolet;
+  // color: white;
+  font-family: "Raleway", sans-serif;
+}
+.togle:hover,
+.togle:active {
+  background-color: lightgreen;
+}
+.togle:visited {
+  background-color: blueviolet;
+}
+// }
+.mat-icon {
+  align-content: left;
+}
+
+.left_menu {
+  margin-left: 0%;
+}
+
+.right_menu {
+  margin-right: 0%;
+}
+
+.draft-icon {
+  background-color: #5c6bc0;
+  color: white;
+}
+.play-icon {
+  color: white;
+}
+.draft-option-panel-bottom {
+  margin-right: 5px;
+  font-family: "Raleway", sans-serif;
+}
+.draft-option-panel-bottom-button {
+  color: white;
+  margin-right: 5px;
+}
+.action_button-bottom {
+  margin-left: 13px;
+}
+
+.timer {
+  background-color: #5c6bc0;
+  color: white;
+  font-family: monospace;
+  font-size: 100%;
+}

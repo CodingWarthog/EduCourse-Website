@@ -1,0 +1,71 @@
+<section *ngIf="!registerMode" class="new-training" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+      <mat-tab-group class="example-card" mat-align-tabs="center" animationDuration="2000ms" >
+        <!-- <mat-tab > 
+            <ng-template mat-tab-label>
+                <mat-icon  class="example-tab-icon"> swap_horiz </mat-icon>
+                Fiszki - wyniki
+              </ng-template>
+              <mat-card class="karta">
+              <app-users-result-flashcard-quiz></app-users-result-flashcard-quiz>
+            </mat-card>
+        </mat-tab> -->
+        <mat-tab class="title"> 
+            <ng-template mat-tab-label>
+                <mat-icon  class="example-tab-icon"> school </mat-icon>
+               <p class="title"> Wyniki</p>
+              </ng-template>
+              <mat-card class="karta">
+              <app-users-result-quiz></app-users-result-quiz>
+            </mat-card>
+        </mat-tab><mat-tab class="title"> 
+            <ng-template mat-tab-label>
+                <mat-icon  class="example-tab-icon"> person </mat-icon>
+                <p class="title"> Informacje</p>
+              </ng-template>
+              <mat-card class="karta">
+              <app-users-info-display></app-users-info-display>
+            </mat-card>
+        </mat-tab>
+        <mat-tab class="title">
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">person_add</mat-icon>
+                <p class="title"> Aktualizuj dane</p>
+              </ng-template>
+              <mat-card>
+         <app-users-info-update> </app-users-info-update>
+        </mat-card>
+        </mat-tab>
+        <mat-tab *ngIf="currentRole =='Administrator'" class="title">
+          <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">person_outline</mat-icon>
+              <p class="title"> Uprawnienia</p>
+            </ng-template>
+            <mat-card>
+       <app-roles> </app-roles>
+      </mat-card>
+      </mat-tab>
+      <mat-tab class="title">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">person_outline</mat-icon>
+            <p class="title"> Odznaki</p>
+          </ng-template>
+          <mat-card>
+     <app-user-badges> </app-user-badges>
+    </mat-card>
+    </mat-tab>
+      <mat-tab *ngIf="currentRole =='Administrator'" class="title">
+          <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">school</mat-icon>
+              <p class="title"> Utwórz odznakę</p>
+            </ng-template>
+            <mat-card>
+       <app-add-badges> </app-add-badges>
+      </mat-card>
+      </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </section>
+  
+  
+  

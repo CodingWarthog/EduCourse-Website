@@ -1,0 +1,99 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="1000px" class="example-card">
+    <form class="example-container" [formGroup]="addQuestionForm" (ngSubmit)="addQuestion()" autocomplete="off">
+      <mat-card fxLayout fxLayoutAlign="center">
+        <mat-card-header fxLayout fxLayoutAlign="center" class="heder">
+          <mat-card-title class="title-card">
+            <h4>Tworzenie Pytań</h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <br>
+      <mat-card-content class="example-container">
+
+        <mat-form-field>
+          <input formControlName="question1" matInput placeholder="Pytanie " name="Firstname" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="answer" matInput placeholder="Odpowiedz" name="Lastname" required>
+        </mat-form-field>
+    
+        <mat-form-field color="accent">
+            <mat-label>
+                <mat-icon class="mat_icon">looks_one</mat-icon> Opcja pierwsza
+              </mat-label>
+          <input  class="optional" formControlName="optionOne" matInput  name="Firstname">
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>
+                <mat-icon class="mat_icon">looks_two</mat-icon> Opcja Druga
+              </mat-label>
+          <input class="optional" formControlName="optionTwo" matInput  name="Lastname">
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>
+                <mat-icon class="mat_icon">looks_3</mat-icon> Opcja Trzecia
+              </mat-label>
+          <input class="optional" formControlName="optionThree" matInput  name="Firstname">
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>
+                <mat-icon class="mat_icon">looks_4</mat-icon> Opcja Czwarta
+              </mat-label>
+          <input mat-raised-button color="warn" formControlName="optionFour" matInput  name="Lastname">
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>
+                <mat-icon class="mat_icon">photo</mat-icon> Adres URL Obrazu
+              </mat-label>
+            <input mat-raised-button color="warn" formControlName="url" matInput  name="Lastname">
+          </mat-form-field>
+
+        <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center">
+          <button type="submit" class="lista" mat-raised-button color="accent">Utworz pytanie</button>
+          <button class="lista" type="button" mat-raised-button color="accent" routerLink="/courses">Zakończ dodawanie
+            pytań</button>
+        </mat-card-actions>
+        <mat-hint id="hint_properties" fxLayout fxLayoutAlign="center">Pola <b> "Pytanie" </b> oraz <b> "Odpowiedz" </b> są wymagane. W celu utworzenia testu wyboru spośrod rożnych odpowiedzi nalezy wprowadzić opcje
+           (jedna z opcji musi być odpowiedzią) 
+        </mat-hint>
+      </mat-card-content>
+    </form>
+    <br>
+    <div fxLayoutAlign="center center">
+
+    </div>
+    <mat-table [dataSource]="dataSource" class="courses">
+      <ng-container matColumnDef="question1">
+        <mat-header-cell *matHeaderCellDef> Course Name </mat-header-cell>
+        <mat-cell *matCellDef="let questions"> {{questions.question1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="answer">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let questions"> {{questions.answer}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="examId">
+        <mat-header-cell *matHeaderCellDef> Other informations </mat-header-cell>
+        <mat-cell *matCellDef="let questions"> {{questions.examId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button (click)="deleteQuestion(row)" mat-button mat-raised-button color="warn" class="btn_delete"
+            [matMenuTriggerFor]="menu">
+            Usun pytanie
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    <mat-menu #menu="matMenu">
+
+
+    </mat-menu>
+  </mat-card>
+</section>

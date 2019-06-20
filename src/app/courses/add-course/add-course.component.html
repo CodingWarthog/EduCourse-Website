@@ -1,0 +1,38 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+    <form class="example-container" [formGroup]="addCourseForm" (ngSubmit)="addCourse()" autocomplete="off">
+
+      <mat-card fxLayout fxLayoutAlign="center">
+        <mat-card-header fxLayout fxLayoutAlign="center" class="heder">
+          <mat-card-title class="title-card">
+            <h4>Tworzenie Kursu</h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card-content class="example-container">
+
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Nazwa kursu" name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="description" matInput placeholder="Opis" name="Lastname">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="other" matInput placeholder="Pozostałe informacje" name="Email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected" formControlName="categoryid">
+            <mat-option *ngFor="let cat of category" value='{{cat.id}}'>{{cat.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center">
+          <button type="submit" class="lista" mat-raised-button color="accent">Utworz kurs</button>
+          <button class="lista" type="button" mat-raised-button color="accent" routerLink="/courses">Powrot</button>
+        </mat-card-actions>
+
+      </mat-card-content>
+    </form>
+  </mat-card>
+</section>

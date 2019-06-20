@@ -1,0 +1,129 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .new-training {
+    padding-top: 30px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+
+  }
+  
+  .btn_enlist{
+
+      background-color: orange;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      color: white;
+  }
+  #btn_easy{
+      background-color: #33FF66; 
+  }
+  #btn_hard{
+    background-color: #FF3333; 
+}
+#previous{
+    background-color:#6699FF;
+    color: white;
+}
+#next{
+    background-color:#6699FF;
+    color: white;
+}
+  .btn-flashcard{
+    font-family: 'Raleway', sans-serif;
+    color: white;
+  }
+  
+  .example-card {
+    border: 20px;
+    
+  }
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  font-family: 'Raleway', sans-serif;
+}
+
+// .mat-chip-list, .mat-card-actions, .mat-chip, .button{
+//     font-family: 'Raleway', sans-serif;
+//     color: whitesmoke;
+    
+// }
+
+ 
+  /*
+   *  Flip animation by David Walsh: https://davidwalsh.name/css-flip
+   */
+
+  /* entire container, keeps perspective */
+  .flip-container {
+      perspective: 1500px;
+     
+  }
+
+      /* flip the pane when hovered */
+      .flip-container.flipped .flipper {
+          transform: rotateY(180deg);
+      }
+
+  .flip-container, .front, .back {
+    //   width: 45vw;
+      height: 20vh;
+      margin: 20px auto;
+      font-family: 'Raleway', sans-serif;
+  }
+  .karta{
+    font-family: 'Raleway', sans-serif;
+  }
+
+  /* flip speed goes here */
+  .flipper {
+      transition: 2s;
+      transform-style: preserve-3d;
+
+      position: relative;
+  }
+
+  /* hide back of pane during swap */
+  .front, .back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: lightgoldenrodyellow;
+      backface-visibility: hidden;
+      -webkit-box-shadow: 0px 8px 4px -4px rgba(163,163,163,0.25);
+      -moz-box-shadow: 4px 8px 4px -4px rgba(163,163,163,0.25);
+      box-shadow: 0px 8px 4px -4px #eaf7cf;
+      border: 1px solid #cbf76c;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom : 0;
+      right :0;
+  }
+
+  /* front pane, placed above back */
+  .front {
+      z-index: 2;
+      /* for firefox 31 */
+      transform: rotateY(0deg);
+      font-family: 'Raleway', sans-serif;
+      font-size: 25px;
+  }
+
+  /* back, initially hidden pane */
+  .back {
+      transform: rotateY(180deg);
+      font-family: 'Raleway', sans-serif;
+      font-size: 25px;
+  }
+
+
+

@@ -1,0 +1,76 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="1000px" class="example-card">
+    <form class="example-container" [formGroup]="addExamForm" (ngSubmit)="addCourse()" autocomplete="off">
+
+      <mat-card fxLayout fxLayoutAlign="center">
+        <mat-card-header fxLayout fxLayoutAlign="center">
+          <mat-card-title >
+            <h4><mat-icon class="header_icon">school</mat-icon></h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card-content class="example-container">
+
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>edit</mat-icon> Nazwa egzaminu
+              </mat-label>
+          <input formControlName="name" matInput  name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>book</mat-icon> Przedmiot
+              </mat-label>
+          <input formControlName="subject" matInput  name="Lastname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>looks_one</mat-icon> Limit czasu
+              </mat-label>
+          <input formControlName="timeLimit" matInput  name="Email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>looks_one</mat-icon> Liczba punktow
+              </mat-label>
+          <input formControlName="totalExamPoints" matInput name="Firstname" value="">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>looks_one</mat-icon> Liczba pytań
+              </mat-label>
+          <input formControlName="numberOfQuestions" matInput  name="Lastname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>list</mat-icon>
+              </mat-label>
+          <mat-label>Wybierz poziom trudności</mat-label>
+          <mat-select formControlName="level">
+            <mat-option value='Poziom podstawowy'>Poziom podstawowy</mat-option>
+            <mat-option value='Poziom ponad podstawowy'>Poziom ponad podstawowy</mat-option>
+            <mat-option value='Poziom średniozaawansowany'>Poziom średniozaawansowany</mat-option>
+            <mat-option value='Poziom zaawansowany'>Poziom zaawansowany</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                <mat-icon>list</mat-icon>
+              </mat-label>
+          <mat-label>Wybierz typ egzaminu</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value='Ustalanie kolejnosci'>Ustalanie kolejności</mat-option>
+            <mat-option value='Zwykly'>Zwykły</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-actions class="example-button-row" fxLayout fxLayoutAlign="center">
+          <button type="submit" class="lista" mat-button mat-raised-button color="accent">Utworz egzamin</button>
+          <button class="lista" type="button" mat-button mat-raised-button color="primary"
+            routerLink="/courses">Powrot</button>
+        </mat-card-actions>
+
+      </mat-card-content>
+    </form>
+  </mat-card>
+</section>

@@ -1,0 +1,42 @@
+  <mat-table [dataSource]="dataSource" class="courses">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nazwa  </mat-header-cell>
+        <mat-cell *matCellDef="let asset"> {{asset.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Typ </mat-header-cell>
+        <mat-cell *matCellDef="let asset">   <mat-icon class="ikona_pdf">picture_as_pdf </mat-icon> {{asset.type}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="creationDate">
+        <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+        <mat-cell *matCellDef="let asset"> {{asset.dateCreated | date:"MM-dd-yy"}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Aktywności </mat-header-cell>
+        <mat-cell *matCellDef="let row; let asset">
+            <a href="{{asset.url}}" mat-button mat-raised-button color="accent" class="btn_delete"
+            [matMenuTriggerFor]="menu">
+            <mat-icon>open_in_new</mat-icon>
+          </a> 
+          <button (click)="moveToUpload()" mat-button mat-raised-button color="primary" class="btn_delete"
+            [matMenuTriggerFor]="menu">
+            <mat-icon>publish</mat-icon>
+            </button>
+          <button (click)="deleteAsset(row)" mat-button mat-raised-button color="warn" class="btn_delete"
+            [matMenuTriggerFor]="menu">
+            <mat-icon>delete</mat-icon>
+            </button>
+            
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    <mat-menu #menu="matMenu">
+
+    </mat-menu>

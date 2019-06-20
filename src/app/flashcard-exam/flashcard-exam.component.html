@@ -1,0 +1,21 @@
+<section  class="new-training" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="65%" class="example-card">
+      <mat-tab-group class="example-card" mat-align-tabs="center" animationDuration="2000ms">
+        <mat-tab> 
+            <ng-template mat-tab-label>
+                <mat-icon  class="example-tab-icon"> swap_horiz </mat-icon>
+                <p class="title">Dostępne zestawy fiszek</p>
+              </ng-template>
+              <app-display-flashcard-set></app-display-flashcard-set>
+        </mat-tab>
+        <mat-tab *ngIf="currentRole =='Nauczyciel'|| currentRole == 'Administrator'"> 
+            <ng-template mat-tab-label>
+                <mat-icon  class="example-tab-icon"> swap_horiz </mat-icon>
+                <p class="title">Moje zestawy fiszek</p>
+              </ng-template>
+              <app-my-flashcard-exam-set></app-my-flashcard-exam-set>
+        </mat-tab>
+    </mat-tab-group>
+    </mat-card>
+  </section>
+  

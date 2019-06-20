@@ -1,0 +1,37 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/" (click)="onClose()">
+    <mat-icon class="example-tab-icon">home</mat-icon>
+    <span class="nav-caption"> Strona głowna</span>
+  </a>
+  <a *ngIf="!loggedIn()" mat-list-item routerLink="/login" (click)="onClose()">
+    <mat-icon class="example-tab-icon">person</mat-icon>
+    <span class="nav-caption"> Zaloguj</span>
+  </a>
+  <a *ngIf="!loggedIn()" mat-list-item routerLink="/register" (click)="onClose()">
+    <mat-icon class="example-tab-icon">person_add</mat-icon>
+    <span class="nav-caption"> Zarejestruj</span>
+  </a>
+  <a mat-list-item routerLink="/users" (click)="onClose()">
+    <mat-icon class="example-tab-icon">person_outline</mat-icon>
+    <span class="nav-caption"> Informacje</span>
+  </a>
+  <a mat-list-item routerLink="" (click)="onClose()">
+    <mat-icon class="example-tab-icon">edit</mat-icon>
+    <span class="nav-caption"> Dostępny egzaminy</span>
+  </a>
+  <a mat-list-item routerLink="/flashcard_exam" (click)="onClose()">
+    <mat-icon class="example-tab-icon">swap_horiz</mat-icon>
+    <span class="nav-caption"> Dostępne zestawy</span>
+  </a>
+  <a mat-list-item routerLink="/courses" (click)="onClose()">
+    <mat-icon class="example-tab-icon">school</mat-icon>
+    <span class="nav-caption"> Kursy</span>
+  </a>
+
+  <mat-list-item>
+    <button mat-icon-button (click)="logOut()">
+      <mat-icon class="example-tab-icon">directions_run</mat-icon>
+      <span class="nav-caption">Logout</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

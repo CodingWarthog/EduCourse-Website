@@ -1,0 +1,45 @@
+.lista{
+    font-family: 'Raleway', sans-serif;
+    color: white
+  }
+  mat-grid-tile {
+    background: #f9f9f9;
+    
+  }
+  text-pos{
+    align-content: left;
+    font-family: 'Raleway', sans-serif;
+    
+  }
+  .courses {
+    font-family: 'Raleway', sans-serif;
+  }
+  .example-container>* {
+    padding-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 100%;
+  }
+  .new-training {
+    padding-top: 30px;
+    text-align: center;
+  }
+  .mat_icon {
+    font-size: 40px;
+  
+  }
+  .mat-header-cell {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .mat-cell {
+    display: flex;
+    justify-content: center;
+  }
+  img{
+    padding-top:25px;
+    width: 60px;
+  }
